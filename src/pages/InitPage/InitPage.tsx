@@ -1,33 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import portadaImg from "../../assets/images/portada.webp";
 import "./InitPage.scss";
 
 import Description from "../../components/DescriptionGeneral/DescriptionGeneral";
 import Slider from "../../components/Slider/Slider";
 import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
-import ContactButton from "../../components/ContactButton/ContactButton";
 import { useInfo } from "../../context/InfoContext";
-import CallButton from "../../components/CallButton/CallButton";
+import BookingFormModal from "../../components/BookingFormModal/BookingFormModal";
+import BookingButton from "../../components/Button/BookingButton/BookingButton";
+import CallButton from "../../components/Button/CallButton/CallButton";
+import ContactButton from "../../components/Button/ContactButton/ContactButton";
 
 const images = [
-    "/assets/images/1.webp",
-    "/assets/images/2.webp",
-    "/assets/images/3.webp",
-    "/assets/images/4.webp",
-    "/assets/images/5.webp",
-    "/assets/images/6.webp",
-    "/assets/images/7.webp",
-    "/assets/images/8.webp",
-    "/assets/images/9.webp",
-    "/assets/images/10.webp",
-    "/assets/images/11.webp",
-    "/assets/images/12.webp",
-    "/assets/images/13.webp",
-    "/assets/images/14.webp",
+    "/images/1.webp",
+    "/images/2.webp",
+    "/images/3.webp",
+    "/images/4.webp",
+    "/images/5.webp",
+    "/images/6.webp",
+    "/images/7.webp",
+    "/images/8.webp",
+    "/images/9.webp",
+    "/images/10.webp",
+    "/images/11.webp",
+    "/images/12.webp",
+    "/images/13.webp",
+    "/images/14.webp",
 ];
 
 const InitPage = () => {
     const { info, isLoading, hasError } = useInfo();
+    const [ openBooking, setOpenBooking ] = useState(false);
 
     // SEO dinámico
     useEffect(() => {
@@ -76,6 +79,12 @@ const InitPage = () => {
             </section>
 
             <h1 id="contact-container">Contacto</h1>
+            
+            <BookingButton onClick={() => setOpenBooking(true)} />
+            <BookingFormModal 
+                isOpen={openBooking} 
+                onClose={() => setOpenBooking(false)} 
+                />
             <CallButton phone={info?.phone || ""} visible={info?.phonevisible || false} />
             <ContactButton mail={info?.mail || ""} />
 

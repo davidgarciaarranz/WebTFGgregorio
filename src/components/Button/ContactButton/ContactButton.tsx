@@ -1,4 +1,5 @@
-import "./ContactButton.scss";
+import "../Button.scss";
+//import "./ContactButton.scss";
 
 interface ContactButtonProps {
     mail: string;

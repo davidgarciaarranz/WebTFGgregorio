@@ -3,14 +3,35 @@
 $accent: hsl(186 100% 69%);
 $mobile: 768px;
 
+//botón email
+.contactame {
+    width: 75%;
+    padding-bottom: 110px;
+    margin-top: 10px;
+    text-align: center;
+    background-color: black;
+}
+
+/* efecto glow/reflejo */
+.contactame button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.7;
+    filter: blur(1em);
+    transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+    background: #00e0ff; /* reemplaza $accent */
+    pointer-events: none;
+}
+
+//boton llamada
 .llamanos {
     width: 75%;
     margin-top: 15px;
     text-align: center;
 }
 
-.call-glowing-btn {
-    display: inline-block;
+.glowing-btn {
     position: relative;
     color: $accent;
     cursor: pointer;
@@ -22,7 +43,6 @@ $mobile: 768px;
     font-family: "Raleway", sans-serif;
     font-size: 2em;
     font-weight: 900;
-    text-decoration: none;
     box-shadow:
         inset 0 0 0.5em 0 $accent,
         0 0 0.5em 0 $accent;
@@ -33,8 +53,6 @@ $mobile: 768px;
         font-weight: 150;
         letter-spacing: 0.1em;
     }
-
-
 
     &::after {
         content: "";
@@ -51,30 +69,14 @@ $mobile: 768px;
         color: rgba(0, 0, 0, 0.8);
         animation: none;
 
+        &::before {
+            filter: blur(1.5em);
+            opacity: 1;
+        }
+
         &::after {
             opacity: 1;
         }
-    }
-}
-
-// Desktop: muestra el número, oculta "Llamar"
-.phone-mobile {
-    display: none;
-}
-
-.phone-desktop {
-    display: inline-block;
-}
-
-@media (width < $mobile) {
-
-    // Móvil: oculta el número, muestra "Llamar"
-    .phone-desktop {
-        display: none;
-    }
-
-    .phone-mobile {
-        display: inline-block;
     }
 }
 

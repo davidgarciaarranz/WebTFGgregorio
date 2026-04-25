@@ -1,4 +1,5 @@
 import "./CallButton.scss";
+import '../Button.scss';
 
 interface CallButtonProps {
     phone: string;
@@ -11,10 +12,10 @@ const CallButton = ({ phone, visible }: CallButtonProps) => {
     if (!visible || !phone) return null;
 
     return (
-        <div className="llamanos">
+        <section className="llamanos">
             {/* Desktop: muestra el número directamente */}
             <a
-                className="call-glowing-btn phone-desktop"
+                className="glowing-btn phone-desktop"
                 href={`tel:${phone}`}
                 aria-label={`Teléfono de contacto: ${phone}`}
             >
@@ -25,7 +26,7 @@ const CallButton = ({ phone, visible }: CallButtonProps) => {
 
             {/* Móvil: abre la app de teléfono */}
             <a
-                className="call-glowing-btn phone-mobile"
+                className="glowing-btn phone-mobile"
                 href={`tel:${phone}`}
                 aria-label={`Llamar a Will Only Will`}
             >
@@ -33,7 +34,7 @@ const CallButton = ({ phone, visible }: CallButtonProps) => {
                     📞 <span className="faulty-letter">Llamar</span>
                 </span>
             </a>
-        </div>
+        </section>
     );
 };
 

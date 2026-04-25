@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
+//$accent: hsl(186 100% 69%);
+$mobile: 768px;
+
+// Desktop: muestra el número, oculta "Llamar"
+.phone-mobile {
+    display: none;
+}
+
+.phone-desktop {
+    display: inline-block;
+}
+
+@media (width < $mobile) {
+
+    // Móvil: oculta el número, muestra "Llamar"
+    .phone-desktop {
+        display: none;
+    }
+
+    .phone-mobile {
+        display: inline-block;
+    }
+}
